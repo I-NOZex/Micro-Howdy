@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="choices.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="screen">
+            <div class="status_bar">
+                <span class="network">📶 Worklife Barometer</span>
+                <div class="right">
+                    <span class="battery">🔋🔌</span>
+                    <span class="clock" id="clock">18:20</span>
+                </div>
+            </div>
+            
+            <div class="header"><h3>Micro Howdy</h3></div>
+            
+            <div class="messages" id="messages-container">
+                <div class="message-card received">
+                    <div class="message-body">Hello!!!</div>
+                    <div class="message-timestamp" id="first-msg-time"></div>
+                </div>
+            </div>
+
+            <div class="compose-message">
+                <div class="text-box">
+                    <select id="message-compose-text" name="composed-message">
+                        <option placeholder disabled>Select reply</option>
+                    </select>
+                    <button class="send-message" id="send-message" disabled="disabled"></button>
+                </div>
+            </div>
+        </div>
+
+        <script src="choices.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

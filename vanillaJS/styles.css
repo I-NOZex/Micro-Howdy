@@ -1,0 +1,295 @@
+/* base app styles */
+body {
+  background-color: #393f4c;
+  color: white;
+  font-family: Calibri, Arial;
+  font-size: 16px;
+  padding: 30px;
+  box-sizing: content-box;
+  margin: 0;
+}
+
+.screen {
+  height: calc(100vh - 120px);
+  min-width: 400px;
+  min-height: 360px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 30px solid #272b35;
+  border-width: 30px 15px;
+  border-radius: 25px;
+  background-color: black;
+  margin: 0 auto;
+  max-width: 1vmin;
+}
+
+.status_bar {
+  height: 22px;
+  background-color: #171b1f;
+  padding: 5px 10px;
+}
+
+.status_bar .right {
+  float: right;
+}
+
+.status_bar .clock {
+  margin-left: 10px;
+}
+
+.header {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #00b3f5;
+  margin: 15px 10px;
+}
+
+.header h3 {
+    margin: 0;
+}
+
+.messages {
+  overflow-y: scroll;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.message-card {
+  width: 75%;
+  margin: 15px 0;
+  position: relative;
+
+  padding: 4px 8px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.message-card::after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(5, 107, 166, 0);
+  border-width: 10px;
+  z-index: 0;
+}
+
+.message-card.sent {
+  background-color: #056ba6;
+  float: right;
+}
+
+.message-card.sent::after {
+  border-top-color: #056ba6;
+  right: 0px;
+  margin-right: 10px;
+  bottom: -10px;
+  transform: rotate(90deg);
+}
+
+.message-card.received {
+  background-color: #034870;
+  float: left;
+  animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  /* Firefox */
+  -webkit-animation: fadein 0.5s;
+  /* Safari and Chrome */
+  -o-animation: fadein 0.5s;
+  /* Opera */
+}
+.message-card.received::after {
+  border-top-color: #034870;
+  left: 0px;
+  margin-left: 10px;
+  margin-top: -10px;
+  bottom: -10px;
+  transform: rotate(-90deg);
+}
+
+.message-body {
+  line-height: 1.25rem;
+  letter-spacing: 0.025rem;
+}
+
+.message-timestamp {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  z-index: 1;
+}
+
+.compose-message {
+  width: 100%;
+}
+
+.text-box {
+  position: relative;
+  display: flex;
+}
+
+.message-compose-text {
+  width: 100%;
+  display: inline-flex;
+}
+
+.send-message {
+  display: inline-flex;
+  border: 0px none;
+  color: white;
+  width: 24px;
+  box-sizing: content-box;
+  cursor: pointer;
+  background: url("send-button.png") no-repeat center #056ba6;
+}
+
+.send-message:disabled {
+  background-color: #171b1f;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  background-image: url("send-button-disabled.png");
+}
+
+/* overwrite CHOICES styles to match our design*/
+
+.choices {
+  margin-bottom: 0;
+  color: white;
+  width: 100%;
+  height: 38px;
+}
+
+.choices__inner,
+.is-flipped.is-open .choices__inner {
+  min-height: 24px;
+  background: #171b1f;
+  border: 0px #171b1f;
+  border-radius: 0;
+}
+
+.choices__list.choices__list--dropdown.is-active {
+  width: 100%;
+  color: white;
+  border: none;
+  margin-top: -35px;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background-color: #056ba6;
+}
+
+.choices[data-type*="select-one"] .choices__input,
+.choices__list--dropdown .choices__list {
+  background-color: #171b1f;
+  color: white;
+}
+
+.choices[data-type*="select-one"] .choices__inner {
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.choices[data-type*="select-one"]::after {
+  display: none;
+}
+
+.choices[data-type*="select-one"] .choices__input {
+  max-height: 35px;
+}
+
+.choices__list--single .choices__item {
+  line-height: 20px;
+}
+
+.choices.is-disabled .choices__inner,
+.choices.is-disabled .choices__input {
+  background-color: #171b1f;
+  color: gray;
+}
+
+/* media query styles*/
+
+@media only screen and (max-width: 480px) {
+  .body {
+    padding: 0;
+    margin: 0;
+    background-color: #272b35;
+  }
+
+  .screen {
+    border: 0px none;
+    border-radius: 0;
+    height: 100%;
+    max-width: initial;
+    width: 100%;
+
+    left: 0;
+    position: absolute;
+  }
+}
+
+/* css animation definations */
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading:after {
+  content: " .";
+  animation: dots 750ms steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  40% {
+    color: white;
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
+  }
+}
